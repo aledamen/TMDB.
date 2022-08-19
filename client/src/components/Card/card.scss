@@ -1,0 +1,62 @@
+.mainCard{
+    height: 100vh;
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    .infoCard{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: auto;
+        margin-top: 60px;
+        .image{
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            height: auto;
+            img{
+                border-radius: 5px;
+                width: 218px;
+                height: 328px;
+            }
+        }
+        .info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 50px 10px 50px;
+            width: 50%;
+            color: white;
+            font-size: 20px;
+            span{
+                padding: 10px;
+            }
+            .info2{
+                margin-top: 5px;
+                display: flex;
+                flex-direction: row;
+                .date{
+                    background-color: var(--secondary-color);
+                    display: flex;
+                    align-items: center;
+                    padding: 4px;
+                    margin-right: 5px;
+                    border-radius: 7px;
+                }
+                div{
+                    display: flex;
+                    align-items: center; 
+                }
+            }
+
+        }
+    }
+    .trailer{
+        display: flex;
+        height: 50%;
+        padding: 60px 60px;
+    }
+
+}

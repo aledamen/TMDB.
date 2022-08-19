@@ -1,0 +1,197 @@
+.mainDivSearchs {
+    height: 250vh;
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    .searchMovies {
+        margin-top: 60px;
+        height: auto;
+        padding-top: 10px;
+        display: flex;
+        flex-direction: column;
+        .moviesName {
+            text-align: center;
+            height: auto;
+            color: white;
+            background-color: var(--secondary-color);
+            font-size: 25px;
+            margin: 5px 400px;
+            border-radius: 5px;
+        }
+        .cardMovies {
+            margin: 10px 10px;
+            padding: 40px 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            justify-content: center;
+            .listItem { 
+                background-color: var(--main-color);
+                margin: 0px;
+                overflow: hidden;
+                cursor: pointer;
+                color: white;
+                display:flex;
+                border-radius: 8px;
+                  width: 218px;
+                  height: 328px;
+                  img {
+                  width: 218px;
+                  height: 328px;
+                  object-fit: cover;
+                }
+            
+                &:hover {
+                  width: 218px;
+                  height: 328px;
+                  border-radius: 8px;
+                  margin: 0;
+                  // position: absolute;
+                  // top: -150px;
+                  // -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+                  // box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+                  // border-radius: 5px;
+              
+                  .imgCard {
+                    display: none;
+                  }
+                  .itemInfo {
+                    display: flex;
+                    flex-direction: column;
+                    margin: 0px;
+                    .divHoverImg{
+                      display: flex;
+                    //   justify-content: center;
+                      .hoverImg{
+                      border-radius: 8px;
+                      padding-left: 5px;
+                      height: auto;
+                      width: auto;
+                    }
+                    }
+                    .divInfo{
+                        height: 120px;
+                        .title{
+                            font-size: 16px;
+                            margin: 5px;
+                        }
+                        .description{
+                            padding: 5px;
+                            font-size: 12px;
+                            color: grey;
+                        }
+                    }
+                    // .itemInfoTop {
+                    //   display: flex;
+                    //   width: 350px;
+                    //   height: 200px;
+                    //   flex-direction: column;
+                    //   align-items: center;
+                    //   text-align: center;
+                    //   justify-content: center;
+                    //   overflow: hidden;
+                    //   padding: 10px;
+                    //   font-size: 12px;
+                    //   font-weight: 600;
+                    //   color: gray;
+                    //   word-break:break-all;
+                    //   .divInfo{
+                    //     display: flex;
+                    //     flex-direction: row;
+                    //     padding: 0, 50px;
+                    //     font-size: 20px;
+                    //     color: red;
+                    //   .genre{
+                    //     margin-left: 10px;
+                    //   }
+                    //   }
+                    // }
+              
+                    .desc {
+                      font-size: 13px;
+                      margin-bottom: 10px;
+                    }
+              
+                    .genreAndFav {
+                      display: flex;
+                      font-size: 14px;
+                      color: lightgray;
+                      text-align: center;
+                      align-items: center;
+                      align-content: center;
+                      flex-direction: row;
+                      justify-content: space-around;
+                      .genre{
+                        display: flex;
+                        margin-left: 20px;
+                      }
+                      .button{
+                        display: flex;
+                        align-items: center;
+                        text-align: center;
+                        justify-content: center;
+                        padding: 5px;
+                        text-decoration: inherit;
+                        color: white;
+                        background-color: var(--secondary-color);
+                        border-radius: 5px;
+                        font-weight: 500;
+                        font-size: 13px;
+                        width: 100px;
+                        // margin-left: 20px;
+                        cursor: pointer;
+                        &:hover{
+                          width: 120px;
+                          height: 40px;
+                        }
+                        @media only screen and (max-width: 768px) {
+                            width: 70px;
+                            margin-top: 10px;
+                        }
+                        .playArrow{
+                            @media only screen and (max-width: 768px) {
+                                width: 20px;
+                            } 
+                        }
+                        span{
+                            @media only screen and (max-width: 768px) {
+                                display: none;
+                            } 
+                            
+                        }
+                    }
+            
+                      // button{
+                      //   background:none;
+                      //   color: white;
+                      //   border: none;
+                      //   margin:0;
+                      //   .iconFav{
+                      //   cursor: pointer;
+                      //   display: flex;
+                      //   // margin-right: 20px;
+                      //   background: none;
+                      // }
+                      // }
+                      
+                    }
+                  }
+                }
+              }
+            div {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                img {
+                    width: 185px;
+                    border-radius: 5px;
+                    margin: 10px;
+                }
+                span {
+                    color: white;
+                }
+            }
+        }
+    }
+}
