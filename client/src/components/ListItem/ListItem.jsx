@@ -31,13 +31,16 @@ export default function ListItem({ index, data, name }) {
     }
 
     return (
+        // <button style={{all:'unset'}} onClick={handleWatchNow}>
         <div
             className="listItem"
             style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <img src={`https://image.tmdb.org/t/p/w342/${data.poster_path}`} alt="" className="imgCard" />
+            
+                <img src={`https://image.tmdb.org/t/p/w342/${data.poster_path}`} alt="" className="imgCard" />
+            
 
             {isHovered && (
                 <>
@@ -75,5 +78,6 @@ export default function ListItem({ index, data, name }) {
                 </>
             )}
         </div>
+        // </button >
     )
 }

@@ -4,6 +4,7 @@
     font-size: 20px;
     position: fixed;
     top: 0;
+    padding: 5px;
     z-index: 999;
     background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 20%);
     &.scrolled {
@@ -11,7 +12,7 @@
         opacity: 0.7;
     }
     @media only screen and (max-width: 768px) {
-        font-size: 10px;
+        font-size: 14px;
     }
     .container {
         padding: 0px 40px;
@@ -20,11 +21,11 @@
         justify-content: space-between;
         height: 70px;
         @media only screen and (max-width: 768px) {
-            padding: 0px;
+            padding: 2px;
             height: 50px;
         }
         .left {
-            width: 33%;
+            width: 50px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -48,8 +49,9 @@
                 font-size: 20px;
                 font-weight: 500;
                 @media only screen and (max-width: 768px) {
-                    font-size: 12px;
-                    width:90px;
+                    font-size: 14px;
+                    width:120px;
+                    margin-left: 5px;
                 }
             }
             .searchButton{
@@ -66,6 +68,10 @@
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            @media only screen and (max-width: 948px) {
+                width: 160px;
+                justify-content: center;
+            }
             .links {
                 text-decoration: inherit;
                 color: inherit;
@@ -82,36 +88,47 @@
                 color: var(--secondary-color);
             }
             .icon {
-                margin-left: 20px;
+                margin-left: 52px;
+                width: 40px;
+                height: 40px;
+                @media only screen and (max-width: 948px) {
+                    margin-left: 20px;
+                    width: 30px;
+                    height: 30px;
+                }    
             }
             .xl {
                 margin-left: 30px;
-                @media only screen and (max-width: 768px) {
+                @media only screen and (max-width: 948px) {
                     display: none;
                 }
             }
             .m {
-                margin-left: 20px;
-                @media only screen and (min-width: 768px) {
+                margin-left: 30px;
+                @media only screen and (min-width: 948px) {
                     display: none;
                 }
             }
             .profile {
                 cursor: pointer;
                 display: flex;
+                @media only screen and (max-width: 948px) {
+                display: none;
+                }
                 .options {
                     display: none;
                     border-radius: 5px;
                     background-color: var(--main-color);
                     margin-right: 10px;
-                    @media only screen and (max-width: 768px) {
-                        font-size: 12px;
-                        width:80px;
-                        margin-left: 15px;
+                    @media only screen and (max-width: 948px) {
+                        display: none;
                     }
                 }
                 span {
                     padding: 8px;
+                    @media only screen and (max-width: 948px) {
+                        padding: 0px;
+                    }
                 }
                 &:hover {
                     .options {

@@ -7,14 +7,16 @@
     height: 100vh;
 
   form {
-    width: 30%;
+    width: 400px;
     height: auto;
     box-shadow: 1px 0 10px 15px rgba(0, 0, 0, .3);
     padding: 40px;
     background-color: #fff;
     border-radius: 5px;
     background-color: var(--secondary-color);
-
+    @media(max-width:768px) {
+      width: 300px;
+    }
     span{
         color: white;
         text-align: center;

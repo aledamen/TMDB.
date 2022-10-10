@@ -7,8 +7,6 @@ import { useDispatch } from 'react-redux'
 import { Box, CircularProgress } from '@mui/material'
 
 const Home = ({movies, series}) => {
-    const dispatch = useDispatch()
-
     return (
         <>
             {movies && series ? (

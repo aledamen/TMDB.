@@ -7,14 +7,15 @@ require('dotenv').config()
 
 class AuthController {
     static async signUp(req, res) {
-        const user = await UserService.createUser(req.body)
-        if (user) {
-            const token = generateToken({ _id:user._id, username: user.username, email: user.email, favorites:user.favorites })
-            const payload = validateToken(token)
-            req.user = payload
-            res.cookie('token', token,{ maxAge: 900000} )
-            res.status(201).send(user)
-        }else res.sendStatus(400)
+        const {error, data} = await UserService.createUser(req.body)
+        if (error) {
+            return res.status(400).send(error._message)
+        }
+        const token = generateToken({ _id:data._id, username: data.username, email: data.email, favorites:data.favorites })
+        const payload = validateToken(token)
+        req.user = payload
+        res.cookie('token', token,{ maxAge: 900000} )
+        res.status(201).send(data)
     }
 
     static async logIn(req, res) {

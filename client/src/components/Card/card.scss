@@ -1,5 +1,5 @@
 .mainCard{
-    height: 100vh;
+    height: 1200px;
     background-color: var(--main-color);
     display: flex;
     flex-direction: column;
@@ -9,6 +9,9 @@
         align-items: center;
         height: auto;
         margin-top: 60px;
+        @media(max-width:768px) {
+            flex-direction: column;
+          }
         .image{
             padding: 50px;
             display: flex;
@@ -32,6 +35,8 @@
             font-size: 20px;
             span{
                 padding: 10px;
+                width: 300px;
+                word-break: break-all;
             }
             .info2{
                 margin-top: 5px;

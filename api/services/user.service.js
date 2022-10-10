@@ -4,54 +4,75 @@ const bcrypt = require('bcrypt')
 class UserService {
     static async getAllUsers() {
         try {
-            return await User.find({ status: true }).select({ password: 0, salt:0 })
-        } catch (err) {
-            console.error(err)
+            const resp = await User.find({ status: true }).select({ password: 0, salt: 0 })
+            return {
+                error: false,
+                data:resp
+            }
+        } catch (error) {
+            console.error(error);
+            return { error: true, data: error };
         }
     }
 
     static async getUser(id) {
         try {
-            return await User.findOne({ _id: id, status: true }).select({ password: 0, salt:0  })
-        } catch (err) {
-            console.error(error)
+            const resp = await User.findOne({ _id: id, status: true }).select({ password: 0, salt: 0 })
+            return {
+                error: false,
+                data:resp
+            }
+        } catch (error) {
+            console.error(error);
+            return { error: true, data: error };
         }
     }
 
     static async createUser(userBody) {
+
         try {
             const user = new User(userBody)
-            return await user.save()
-        } catch (err) {
-            console.error(err)
+            const resp = await user.save()
+            return {
+                error: false,
+                data:resp
+            }
+        } catch (error) {
+            console.error(error);
+            return { error: true, data: error };
         }
     }
 
     static async getUserFavorites(id) {
         try {
-            return await User.find({ _id: id, status: true }).select({ favorites: 1 })
-        } catch (err) {
+            const resp = await User.find({ _id: id, status: true }).select({ favorites: 1 })
+            return {
+                error: false,
+                data:resp
+            }
+        } catch (error) {
             console.error(err)
+            return { error: true, data: error };
         }
     }
 
     static async setFavorite(id, favoriteBody) {
         try {
-            // if (!favoriteBody.id) throw Error('no content')
-            // const favorites = await this.getUserFavorites(id)
-            // const includeFavorite = favorites[0].favorites.map((favorite) => favorite.id).includes(favoriteBody.id)
-            // if (!includeFavorite) {
-                return await User.findByIdAndUpdate(id,
+            const resp = await User.findByIdAndUpdate(id,
                     {
                         $addToSet: {
                             favorites: favoriteBody,
                         },
                     },
                     { new: true }
-                )
-            // }else return await User.findOne({ _id: id, status: true }).select({ password: 0, salt:0  })
-        } catch (err) {
+            )
+            return {
+                error: false,
+                data:resp
+            }
+        } catch (error) {
             console.error(err)
+            return { error: true, data: error };
         }
     }
 
@@ -62,37 +83,48 @@ class UserService {
             const email = userBody.email !== '' ? userBody.email : user[0].email
             const password = userBody.password !== '' ? userBody.password : user[0].password
             const salt = bcrypt.genSaltSync()
-            return await User.findByIdAndUpdate(
+            const resp = await User.findByIdAndUpdate(
                 id,
                 {
                     $set: { password: password && bcrypt.hashSync(password, salt), username , email, salt },
                 },
                 { new: true }
+                
             )
-        } catch (err) {
+            return {
+                error: false,
+                data:resp
+            }
+        } catch (error) {
             console.error(err)
+            return { error: true, data: error };
         }
     }
 
     static async deleteUser(id) {
         
         try {
-            await User.findByIdAndUpdate(
+            const resp = await User.findByIdAndUpdate(
                 id,
                 {
                     $set: { status: false },
                 },
                 { new: true }
             )
-        } catch (err) {
+            return {
+                error: false,
+                data:resp
+            }
+        } catch (error) {
             console.error(err)
+            return { error: true, data: error };
         }
     }
 
     static async deleteFavorite(id, favoriteId) {
-        console.log("EL ID",id)
+        
         try {
-            return await User.findByIdAndUpdate(
+            const resp = await User.findByIdAndUpdate(
                 id,
                 {
                     $pull: {
@@ -101,16 +133,26 @@ class UserService {
                 },
                 { new: true }
             )
-        } catch (err) {
+            return {
+                error: false,
+                data:resp
+            }
+        } catch (error) {
             console.error(err)
+            return { error: true, data: error };
         }
     }
 
     static async searchUser(searchString) {
         try {
-            return await User.find({ username: searchString, status: true }).select({ password: 0, salt:0  })
-        } catch (err) {
+            const resp = await User.find({ username: searchString, status: true }).select({ password: 0, salt: 0 })
+            return {
+                error: false,
+                data:resp
+            }
+        } catch (error) {
             console.error(err)
+            return { error: true, data: error };
         }
     }
 }

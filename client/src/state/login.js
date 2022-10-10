@@ -8,14 +8,13 @@ export const sendMe = createAsyncThunk('ME', async () => {
 })
 
 export const signUpRequest = createAsyncThunk('SIGNUP', async (info) => {
-    const res = await axios.post('/api/auth/signup', info)
+    const res = await axios.post('/api/auth/signup', info)   
     return res.data
 })
 
 export const sendLoginRequest = createAsyncThunk('LOGIN', async (info) => {
     const login = await axios.post('/api/auth/login', info)
     const res = await axios.get(`/api/user/${login.data._id}`)
-    console.log('LARES', res)
     return res.data
 })
 

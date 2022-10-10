@@ -20,11 +20,10 @@ const Featured = ({ movies }) => {
     }
     return (
                 <div className="featured">
-                    <img className="poster" src={`https://image.tmdb.org/t/p/w1280${backdropPath}`} alt="" />
+                    <img className="poster" src={`https://image.tmdb.org/t/p/w1280${backdropPath}`} alt={movies[number].title} />
                     <div className="info">
-                        <img src={`https://image.tmdb.org/t/p/w185${posterPath}`} alt="" />
+                        <img src={`https://image.tmdb.org/t/p/w185${posterPath}`} alt={movies[number].title} />
                         <span className="title">{movies[number].title}</span>
-                        <span className="description">{movies[number].overview}</span>
                         <div className="info2">
                             {movies[number].genre_ids.map((genre, i) => (
                                     <div key={i} className="date">

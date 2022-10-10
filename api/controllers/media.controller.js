@@ -2,49 +2,43 @@ const MediaService = require('../services/media.service')
 
 class MediaController {
     static async getAllMovies(req, res) {
-        
-        try {
-            const movies = await MediaService.getAllMovies()
-            res.status(200).send(movies.data)
-        } catch (err) {
-            console.error(err)
+        const {error, data} = await MediaService.getAllMovies()
+        if (error) {
+            return res.status(404).send(error._message)
         }
+        res.status(200).send(data.data)
     }
 
     static async getAllSeries(req, res) {
-        try {
-            const series = await MediaService.getAllSeries()
-            res.status(200).send(series.data)
-        } catch (err) {
-            console.error(err)
+        const {error, data} = await MediaService.getAllSeries()
+        if (error) {
+            return res.status(404).send(error._message)
         }
+        res.status(200).send(data.data)
     }
 
     static async getMovie(req, res) {
-        try {
-            const movie = await MediaService.getMovie(req.params.id)
-            res.status(200).send(movie.data)
-        } catch (err) {
-            console.error(err)
+        const {error, data} = await MediaService.getMovie(req.params.id)
+        if (error) {
+            return res.status(404).send(error._message)
         }
+        res.status(200).send(data.data)
     }
 
     static async getSerie(req, res) {
-        try {
-            const serie = await MediaService.getSerie(req.params.id)
-            res.status(200).send(serie.data)
-        } catch (err) {
-            console.error(err)
+        const {error, data} = await MediaService.getSerie(req.params.id)
+        if (error) {
+            return res.status(404).send(error._message)
         }
+        res.status(200).send(data.data)
     }
 
     static async searchMedia(req, res) {
-        try {
-            const media = await MediaService.searchMedia(req.params.search)
-            res.status(200).send(media.data)
-        } catch (err) {
-            console.error(err)
+        const {error, data} = await MediaService.searchMedia(req.params.search)
+        if (error) {
+            return res.status(404).send(error._message)
         }
+        res.status(200).send(data.data)
     }
 }
 

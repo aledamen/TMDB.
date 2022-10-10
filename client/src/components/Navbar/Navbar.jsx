@@ -3,17 +3,15 @@ import './navbar.scss'
 import LiveTvIcon from '@mui/icons-material/LiveTv'
 import SearchIcon from '@mui/icons-material/Search'
 import PersonIcon from '@mui/icons-material/Person'
-import MovieIcon from '@mui/icons-material/Movie'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { sendLogOutRequest, sendMe } from '../../state/login'
+import { sendLogOutRequest } from '../../state/login'
 import { getSearchMedia } from '../../state/search'
-
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false)
-    const [search, setSearch] = useState("")
+    const [search, setSearch] = useState('')
     const user = useSelector((state) => state.login)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -25,11 +23,11 @@ const Navbar = () => {
 
     const handleLogOut = (e) => {
         e.preventDefault()
-        dispatch(sendLogOutRequest()).then(()=>navigate('/'))
+        dispatch(sendLogOutRequest()).then(() => navigate('/'))
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        search && dispatch(getSearchMedia(search)).then(()=>navigate(`/media/search/${search}`))
+        search && dispatch(getSearchMedia(search)).then(() => navigate(`/media/search/${search}`))
     }
     const handleSearch = (e) => {
         setSearch(e.target.value)
@@ -87,27 +85,37 @@ const Navbar = () => {
                             <span className="xl">Users</span>
                         </Link>
                         <span className="m">
-                            <Link className="links" to="/movies">
-                                <MovieIcon sx={{ '&:hover': { color: '#1b94cc' } }} />
-                            </Link>
+                            {user.username ? (
+                                <Link className="links" to="/users/profile/:id">
+                                    Profile
+                                </Link>
+                            ) : (
+                                <Link className="links" to="/login">
+                                    LogIn
+                                </Link>
+                            )}
                         </span>
                         <span className="m">
-                            <Link className="links" to="/series">
-                                <LiveTvIcon sx={{ '&:hover': { color: '#1b94cc' } }} />
-                            </Link>
+                            {user.username ? (
+                                    <Link className="links" to="/users/profile/:id">
+                                        LogOut
+                                    </Link>
+
+                            ) : (
+                                    <Link className="links" to="/signup">
+                                        SignUp
+                                    </Link>
+                            )}
                         </span>
                         <div className="profile">
                             {user.username ? (
                                 <PersonIcon
                                     className="icon"
-                                    sx={{color:'#1b94cc'}}
-                                    style={{ marginLeft: '52px', width: '40px', height: '40px'}}
-                            />
-                            ) : (
-                                <PersonIcon
-                                    className="icon"
-                                    style={{ marginLeft: '52px', width: '40px', height: '40px'}}
+                                    sx={{ color: '#1b94cc' }}
+                                    style={{ marginLeft: '52px', width: '40px', height: '40px' }}
                                 />
+                            ) : (
+                                <PersonIcon className="icon" />
                             )}
 
                             {user.username ? (

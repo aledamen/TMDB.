@@ -1,20 +1,17 @@
 import { Box, CircularProgress } from '@mui/material'
 import React, { useState } from 'react'
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router'
 import { deleteUser, removeFromFavorite, sendLogOutRequest, setNewFavorite, updateUser } from '../../state/login'
 import './profile.scss'
-import ListCards from '../ListCards/ListCards'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { getSerie } from '../../state/series'
 import { getMovie } from '../../state/movies'
-const Profile = () => {
 
+const Profile = () => {
     const user = useSelector((state) => state.login)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    let location = useLocation().pathname.split('/')[1]
     const [userInfo, setUserInfo] = useState({
         username: '',
         email: '',
@@ -38,11 +35,12 @@ const Profile = () => {
     const handleRemoveFavorite = (item) => {
         user._id && dispatch(removeFromFavorite(item))
     }
-    console.log(user)
+
     return (
         <div className="mainDivProfile">
             {user._id ? (
                 <div className="searchMovies">
+                    <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
                     <div className="moviesName">
                         <span>{user.favorites ? 'FAVORITES' : 'NO FAVORITES ADDED'}</span>
                     </div>
@@ -67,7 +65,7 @@ const Profile = () => {
                     </div>
                     <div className="moviesName">
                         <span>{'USER INFO'}</span>
-                    </div>
+                    </div></div>
                     <div className="centerItem">
                         <form onSubmit={handleSubmitUpdate}>
                             <p>Change my data</p>
