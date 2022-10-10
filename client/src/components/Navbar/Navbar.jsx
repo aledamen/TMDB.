@@ -97,14 +97,13 @@ const Navbar = () => {
                         </span>
                         <span className="m">
                             {user.username ? (
-                                    <Link className="links" to="/users/profile/:id">
-                                        LogOut
-                                    </Link>
-
+                                <button className="linksProfile" onClick={handleLogOut} to="/" style={{ all: 'unset' }}>
+                                    <span>LogOut</span>
+                                </button>
                             ) : (
-                                    <Link className="links" to="/signup">
-                                        SignUp
-                                    </Link>
+                                <Link className="links" to="/signup">
+                                    SignUp
+                                </Link>
                             )}
                         </span>
                         <div className="profile">
