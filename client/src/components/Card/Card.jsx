@@ -42,7 +42,7 @@ const Card = () => {
                     <img src={`https://image.tmdb.org/t/p/w342${content.poster_path}`} alt="" />
                 </div>
                 <div className="info">
-                    <span>{content.title}</span>
+                    <span style={{fontSize:'1.2rem', fontWeight:'600'}}>{content.title}</span>
                     <span>{content.overview}</span>
                     <div className="info2">
                         {content.genres.map((genre, i) => (

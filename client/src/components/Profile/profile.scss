@@ -29,6 +29,9 @@
             justify-content: space-between;
             flex-wrap: wrap;
             justify-content: flex-start;
+            @media(max-width:768px) {
+              flex-direction: column;
+            }
             .imageFavorites{
               cursor: pointer;
             img{
@@ -150,7 +153,7 @@
     flex-direction: column;
     align-items: center;
     background-color: red;
-    width: 400px;
+    width: 350px;
     height: auto;
     box-shadow: 1px 0 10px 15px rgba(0, 0, 0, .3);
     padding: 40px;
