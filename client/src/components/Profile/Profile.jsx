@@ -1,12 +1,10 @@
 import { Box, CircularProgress } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router'
+import {  useNavigate } from 'react-router'
 import { deleteUser, removeFromFavorite, sendLogOutRequest, setNewFavorite, updateUser } from '../../state/login'
 import './profile.scss'
 import DeleteIcon from '@mui/icons-material/Delete';
-import { getSerie } from '../../state/series'
-import { getMovie } from '../../state/movies'
 import { Link } from 'react-router-dom'
 
 const Profile = () => {
@@ -29,10 +27,6 @@ const Profile = () => {
     const handleDeleteUser = (e) => {
         dispatch(deleteUser(user._id)).then(()=>dispatch(sendLogOutRequest())).then(()=>navigate('/'))
     }
-    // const handleWatchFavorite = (item) => {
-    //     item.name ? dispatch(getSerie(item.id)).then(() => navigate(`/media/series/${item.id}`))
-    //     : dispatch(getMovie(item.id)).then(() => navigate(`/media/movies/${item.id}`))                            
-    // }
     const handleRemoveFavorite = (item) => {
         user._id && dispatch(removeFromFavorite(item))
     }
