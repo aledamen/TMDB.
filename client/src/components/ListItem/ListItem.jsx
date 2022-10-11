@@ -1,10 +1,7 @@
 import './listItem.scss'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { genreIds } from '../../utils/utils'
-import { getMovie } from '../../state/movies'
-import { getSerie } from '../../state/series'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeFromFavorite, setNewFavorite } from '../../state/login'
 import AddIcon from '@mui/icons-material/Add'
@@ -13,7 +10,6 @@ import RemoveIcon from '@mui/icons-material/Remove'
 export default function ListItem({ index, data, name }) {
     const [isHovered, setIsHovered] = useState(false)
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const description = `${data.overview.slice(0, 60)}...`
     const user = useSelector((state) => state.login)
 
@@ -24,14 +20,7 @@ export default function ListItem({ index, data, name }) {
         user._id && dispatch(removeFromFavorite(data))
     }
 
-    const handleWatchNow = () => {
-        name == 'movies'
-            ? dispatch(getMovie(data.id)).then(() => navigate(`/media/movies/${data.id}`))
-            : dispatch(getSerie(data.id)).then(() => navigate(`/media/series/${data.id}`))
-    }
-
     return (
-        // <button style={{all:'unset'}} onClick={handleWatchNow}>
         <div
             className="listItem"
             style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
@@ -65,7 +54,7 @@ export default function ListItem({ index, data, name }) {
                             </div>
                         </div>
                         <div className="genreAndFav">
-                        <Link to={`/media/movies/${data.id}`} className="button">
+                        <Link to={name == 'movies'?`/media/movies/${data.id}` : `/media/series/${data.id}`} className="button">
                                 <PlayArrowIcon className="playArrow" />
                             </Link>
                             <div>
@@ -78,6 +67,5 @@ export default function ListItem({ index, data, name }) {
                 </>
             )}
         </div>
-        // </button >
     )
 }

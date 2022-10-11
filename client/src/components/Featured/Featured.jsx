@@ -1,23 +1,16 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import './featured.scss'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import { numberRandom } from '../../utils/utils'
 import { genreIds } from '../../utils/utils'
-import { useDispatch } from 'react-redux'
-import { getMovie } from '../../state/movies'
+
 
 const Featured = ({ movies }) => {
     
     const number = numberRandom()
     const backdropPath = movies[number].backdrop_path
     const posterPath = movies[number].poster_path
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
 
-    const handleWatchNow = () => {
-        dispatch(getMovie(movies[number].id)).then(()=>navigate(`/media/movies/${movies[number].id}`))
-    }
     return (
         <div className="featured">
             <img

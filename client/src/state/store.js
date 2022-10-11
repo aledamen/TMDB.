@@ -11,9 +11,7 @@ const store = configureStore({
     reducer: {
         login: loginReducer,
         movies: allMoviesReducer,
-        onemovie: oneMovieReducer,
         series: AllSeriesReducer,
-        oneserie: OneSerieReducer,
         search: searchReducer,
         users: allUsersReducer,
     },
