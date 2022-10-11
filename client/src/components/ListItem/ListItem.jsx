@@ -65,9 +65,9 @@ export default function ListItem({ index, data, name }) {
                             </div>
                         </div>
                         <div className="genreAndFav">
-                            <button onClick={handleWatchNow} className="button">
+                        <Link to={`/media/movies/${data.id}`} className="button">
                                 <PlayArrowIcon className="playArrow" />
-                            </button>
+                            </Link>
                             <div>
                                 <AddIcon onClick={handleAddFavorites} sx={{margin:'10px', '&:hover':{color:'#1b94cc'}}} />
                             <RemoveIcon onClick={handleRemoveFavorites} sx={{margin:'10px', '&:hover':{color:'#f82e2e'}}}/>
