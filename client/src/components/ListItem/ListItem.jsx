@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { removeFromFavorite, setNewFavorite } from '../../state/login'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
+import { Link } from 'react-router-dom'
 
 export default function ListItem({ index, data, name }) {
     const [isHovered, setIsHovered] = useState(false)

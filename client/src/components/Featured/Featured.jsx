@@ -3,6 +3,7 @@ import './featured.scss'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import { numberRandom } from '../../utils/utils'
 import { genreIds } from '../../utils/utils'
+import { Link } from 'react-router-dom'
 
 
 const Featured = ({ movies }) => {

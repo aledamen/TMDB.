@@ -5,6 +5,7 @@ import { removeFromFavorite, setNewFavorite } from '../../state/login'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
+import { Link } from 'react-router-dom'
 
 const ListCards = ({ data }) => {
     const [isHovered, setIsHovered] = useState(false)

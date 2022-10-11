@@ -4,7 +4,6 @@ import Navbar from './components/Navbar/Navbar'
 import { Route, Routes } from 'react-router'
 import Register from './components/Register/Register'
 import Cards from './components/Cards/Cards'
-import Featured from './components/Featured/Featured'
 import Card from './components/Card/Card'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
@@ -14,6 +13,7 @@ import { getAllSeries } from './state/series'
 import { Box, CircularProgress } from '@mui/material'
 import { getAllUsers } from './state/user'
 import Profile from './components/Profile/Profile'
+import Footer from './components/Footer/Footer'
 
 function App() {
     const dispatch = useDispatch()
@@ -52,6 +52,7 @@ function App() {
                     <CircularProgress />
                 </Box>
             )}
+            <Footer/>
         </div>
     )
 }

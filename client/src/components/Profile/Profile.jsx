@@ -7,6 +7,7 @@ import './profile.scss'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { getSerie } from '../../state/series'
 import { getMovie } from '../../state/movies'
+import { Link } from 'react-router-dom'
 
 const Profile = () => {
     const user = useSelector((state) => state.login)
@@ -28,10 +29,10 @@ const Profile = () => {
     const handleDeleteUser = (e) => {
         dispatch(deleteUser(user._id)).then(()=>dispatch(sendLogOutRequest())).then(()=>navigate('/'))
     }
-    const handleWatchFavorite = (item) => {
-        item.name ? dispatch(getSerie(item.id)).then(() => navigate(`/media/series/${item.id}`))
-        : dispatch(getMovie(item.id)).then(() => navigate(`/media/movies/${item.id}`))                            
-    }
+    // const handleWatchFavorite = (item) => {
+    //     item.name ? dispatch(getSerie(item.id)).then(() => navigate(`/media/series/${item.id}`))
+    //     : dispatch(getMovie(item.id)).then(() => navigate(`/media/movies/${item.id}`))                            
+    // }
     const handleRemoveFavorite = (item) => {
         user._id && dispatch(removeFromFavorite(item))
     }
@@ -48,8 +49,8 @@ const Profile = () => {
                         {user.favorites?.map((item) =>{
                             return item.poster_path ? (
                                 <div className='imageFavorites'>
-                                    <div style={{ margin: '0px' }} onClick={() => {handleWatchFavorite(item)}}>
-                                        <img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} alt="" /></div>
+                                    <Link style={{ margin: '0px' }} to={item.name ? `/media/series/${item.id}` : `/media/movies/${item.id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} alt="" /></Link>
                                 <div>
                                     <DeleteIcon
                                         onClick={()=>handleRemoveFavorite(item)}
